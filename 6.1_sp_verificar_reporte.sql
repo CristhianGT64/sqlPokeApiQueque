@@ -8,6 +8,6 @@ BEGIN
     WHERE id = @id;
 END;
 
-EXECUTE pokequeue.sp_EliminarReportePorId @id = 13;
+-- EXECUTE pokequeue.sp_EliminarReportePorId @id = 13;
 
-SELECT * FROM pokequeue.requests WHERE id = 13;
+SELECT * FROM pokequeue.requests WHERE id = 21;
