@@ -13,4 +13,4 @@ set id_status = ( select id from pokequeue.status where description = @status )
     , updated = GETDATE()
 WHERE id = @id;
 
-select 1 as completed;
+select 1 as completed

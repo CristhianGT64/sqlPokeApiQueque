@@ -1,4 +1,4 @@
-create PROCEDURE pokequeue.create_poke_request(
+ALTER PROCEDURE pokequeue.create_poke_request(
     @type NVARCHAR(255)
 )
 AS 

@@ -1,9 +1,19 @@
-create login PokeQueueApp with PASSWORD = 'Password123@';
+create table pokequeue.[status](
+    id int IDENTITY(1,1) PRIMARY KEY,
+    [description] VARCHAR(255) NOT NULL
+)
 
-create user PokeQueueApUser for login PokeQueueApp;
+INSERT INTO pokequeue.[status] ([description]) 
+VALUES ('sent'),('inprogress'),('completed'),('failed');
 
-grant select on SCHEMA :: pokequeue to PokeQueueApUser;
-grant insert on SCHEMA :: pokequeue to PokeQueueApUser;
-grant update on SCHEMA :: pokequeue to PokeQueueApUser;
-grant delete on SCHEMA :: pokequeue to PokeQueueApUser;
-grant execute on SCHEMA :: pokequeue to PokeQueueApUser;
+
+
+create table pokequeue.[requests](
+    id int IDENTITY(1,1) PRIMARY KEY,
+    [type] NVARCHAR(255) NOT NULL,
+    id_status int NOT NULL,
+    [url] NVARCHAR(1000) NOT NULL, 
+    created DATETIME DEFAULT GETDATE(),
+    updated DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (id_status) REFERENCES pokequeue.[status](id)
+)
